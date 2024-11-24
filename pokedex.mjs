@@ -1,4 +1,5 @@
 // Load the readline library
+// https://www.w3schools.com/java/java_try_catch.asp
 const readline = require("readline");
 
 // Setup readline to listen on the stdin stream
@@ -26,5 +27,8 @@ async function searchPoke(term) {
     }
     catch (err) {
         console.error("An error has occured: ", err);
+    }
+    finally {
+        run(); // call run to reprompt users 
     }
 }
