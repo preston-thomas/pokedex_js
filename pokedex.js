@@ -1,5 +1,6 @@
 // Load the readline library
 // https://www.w3schools.com/java/java_try_catch.asp
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 const readline = require("readline");
 
 // Setup readline to listen on the stdin stream
@@ -22,13 +23,37 @@ function prompt(cb) {
 async function searchPoke(term) {
     try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon/${term}');
-        const pokeJSON = response.json();
-        printPoke(pokeJSON) // although it's not codded yet this function will print our Pokemon out neatly
+        const pokeJSON = await response.json();
+        printPoke(pokeJSON)
     }
     catch (err) {
         console.error("An error has occured: ", err);
     }
     finally {
         run(); // call run to reprompt users 
+    }
+}
+
+printPoke(json) {
+    console.log('Pokemon Name: ${json.forms.name}');
+    console.log('Pokemon Types: ${json.types.name}');
+    console.log('Pokemon First Version Appearance: ${json.game_indices.version.name}');
+    console.log('Pokemon Height: ${json.game_indices.height}');
+    console.log('Pokemon Weight: ${json.weight}');
+    // Need implementation of printing out the moveset of pokemon
+    // same with types if i think we will need a for loop
+}
+
+async function searchItem(term) {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/item/${term}');
+        const itemJSON = await response.json()
+        printItem(itemJSON)
+    } 
+    catch (err) {
+        console.error("An error has occured: ", err);
+    }
+    finally {
+        run();
     }
 }
