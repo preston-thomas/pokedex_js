@@ -1,7 +1,8 @@
-// Load the readline library
 // https://www.w3schools.com/java/java_try_catch.asp
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
 const readline = require("readline");
+const fetch = require("node-fetch")
 
 // Setup readline to listen on the stdin stream
 const rl = readline.createInterface(process.stdin, process.stdout);
@@ -23,6 +24,9 @@ function prompt(cb) {
 async function searchPoke(term) {
     try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon/${term}');
+        if (!response.ok) {
+            throw new Error(`Pokemon does not exist`);
+    }
         const pokeJSON = await response.json();
         printPoke(pokeJSON)
     }
@@ -47,6 +51,9 @@ printPoke(json) {
 async function searchItem(term) {
     try {
         const response = await fetch('https://pokeapi.co/api/v2/item/${term}');
+        if (!response.ok) {
+            throw new Error(`Pokemon does not exist`);
+        }
         const itemJSON = await response.json()
         printItem(itemJSON)
     } 
