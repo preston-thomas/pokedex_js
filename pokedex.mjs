@@ -15,5 +15,16 @@ function showMenu() {
 function prompt(cb) {
     rl.readline("Enter your command to search through the Pokedex: ", (response) => {
         cb(response) // the function will call the callback (CB) with the response/user input as the parameter 
-    })
+    });
+}
+
+async function searchPoke(term) {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/${term}');
+        const pokeJSON = response.json();
+        printPoke(pokeJSON) // although it's not codded yet this function will print our Pokemon out neatly
+    }
+    catch (err) {
+        console.error("An error has occured: ", err);
+    }
 }
