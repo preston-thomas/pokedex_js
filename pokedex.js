@@ -38,7 +38,7 @@ async function searchPoke(term) {
     }
 }
 
-printPoke(json) {
+function printPoke(json) {
     console.log('Pokemon Name: ${json.forms.name}');
     console.log('Pokemon Types: ${json.types.name}');
     console.log('Pokemon First Version Appearance: ${json.game_indices.version.name}');
@@ -63,4 +63,11 @@ async function searchItem(term) {
     finally {
         run();
     }
+}
+
+function printItem(json) {
+    console.log('Item Name: ${json.name}');
+    console.log('Item Category: ${json.category.name}');
+    console.log('Item Effect: ${json.effect_entries.effect}');
+    console.log('Item Cost: ${json.cost}');
 }
