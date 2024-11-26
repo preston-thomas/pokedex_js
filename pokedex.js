@@ -23,18 +23,36 @@ function prompt(cb) {
 
 async function searchPoke(term) {
     try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/${term}');
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${term}`);
         if (!response.ok) {
-            throw new Error(`Pokemon does not exist`);
+            throw new Error(`Pokemon does not exist.`);
     }
         const pokeJSON = await response.json();
         printPoke(pokeJSON)
     }
     catch (err) {
-        console.error("An error has occured: ", err);
+        console.error("An error has occured while fetching the Pokemon: ", err);
     }
     finally {
         run(); // call run to reprompt users 
+    }
+}
+
+// modeling structure after searchPoke
+async function searchMove(term) {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/move/${term}`);
+        if (!response.ok) {
+            throw new Error(`Move does not exist.`);
+    }
+        const moveJSON = await response.json();
+        printMove(moveJSON);
+    }
+    catch (err) {
+        console.error("An error has occurred while fetching the move: ", err);
+    }
+    finally {
+        run(); 
     }
 }
 
@@ -71,3 +89,27 @@ function printItem(json) {
     console.log('Item Effect: ${json.effect_entries.effect}');
     console.log('Item Cost: ${json.cost}');
 }
+function run() {
+    showMenu();
+    rl.question("Please select an option to proceed.", answer => {
+    while (answer) {
+        if (answer == 1) {
+            prompt(searchPoke()); // prompt will handle the parameter for this
+            break;
+        }
+        if (answer == 2) {
+            prompt(searchItem()); // prompt will handle the parameter for this
+            break;
+        }
+        if (answer == 3) {
+           // prompt(searchMove()); commenting out until we add this function
+           break;
+        }
+        if (answer == 4) {
+            console.log(`Good luck, Pokemon trainer!`);
+            rl.close();
+            break;
+        }
+    }
+}
+)};
