@@ -58,10 +58,10 @@ async function searchMove(term) {
 
 function printPoke(json) {
     console.log('Pokemon Name: ${json.forms.name}');
-    console.log('Pokemon Types: ${json.types.name}');
-    console.log('Pokemon First Version Appearance: ${json.game_indices.version.name}');
     console.log('Pokemon Height: ${json.game_indices.height}');
     console.log('Pokemon Weight: ${json.weight}');
+    console.log('Pokemon Base Experience ${json.base_experience}');
+    console.log('Pokemon First Version Appearance: ${json.game_indices.version.name}');
     // Need implementation of printing out the moveset of pokemon
     // same with types if i think we will need a for loop
 }
@@ -89,6 +89,11 @@ function printItem(json) {
     console.log('Item Effect: ${json.effect_entries.effect}');
     console.log('Item Cost: ${json.cost}');
 }
+
+function printMove(json) {
+
+}
+
 function run() {
     showMenu();
     rl.question("Please select an option to proceed.", answer => {
