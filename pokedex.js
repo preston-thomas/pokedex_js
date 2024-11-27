@@ -46,7 +46,9 @@ async function searchMove(term) {
             throw new Error(`Move does not exist.`);
     }
         const moveJSON = await response.json();
-        printMove(moveJSON);
+        for (move in moveJSON) {
+            printMove(moveJSON);
+        }
     }
     catch (err) {
         console.error("An error has occurred while fetching the move: ", err);
