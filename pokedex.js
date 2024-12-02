@@ -8,11 +8,11 @@ const fetch = require("node-fetch")
 const rl = readline.createInterface(process.stdin, process.stdout);
  
 function showMenu() {
-    console.log("Pokemon Pokedox Menu: ");
-    console.log("1. Search Pokemon");
-    console.log("2. Search Item");
-    console.log("3. Search Move");
-    console.log("4. Exit");
+    console.log("Pokemon Pokedex Menu: ");
+    console.log("1: Search Pokemon");
+    console.log("2: Search Item");
+    console.log("3: Search Move");
+    console.log("4: Exit");
 }
 
 function prompt(cb) {
