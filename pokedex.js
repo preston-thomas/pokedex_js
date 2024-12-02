@@ -16,7 +16,7 @@ function showMenu() {
 }
 
 function prompt(cb) {
-    rl.readline("Enter your command to search through the Pokedex: ", (response) => {
+    rl.question("Enter your command to search through the Pokedex: ", (response) => {
         cb(response) // the function will call the callback (CB) with the response/user input as the parameter 
     });
 }
