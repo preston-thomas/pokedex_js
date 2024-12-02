@@ -20,7 +20,8 @@ function prompt(cb) {
 
 async function searchPoke(term) {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${term}`);
+        const lowerTerm = term.toLowerCase();
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${lowerTerm}`);
         if (!response.ok) {
             throw new Error(`Pokemon does not exist.`);
         }
@@ -35,7 +36,8 @@ async function searchPoke(term) {
 
 async function searchMove(term) {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/move/${term}`);
+        const lowerTerm = term.toLowerCase();
+        const response = await fetch(`https://pokeapi.co/api/v2/move/${lowerTerm}`);
         if (!response.ok) {
             throw new Error(`Move does not exist.`);
         }
@@ -50,7 +52,8 @@ async function searchMove(term) {
 
 async function searchItem(term) {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/item/${term}`);
+        const lowerTerm = term.toLowerCase();
+        const response = await fetch(`https://pokeapi.co/api/v2/item/${lowerTerm}`);
         if (!response.ok) {
             throw new Error(`Item does not exist`);
         }
