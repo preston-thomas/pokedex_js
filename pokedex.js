@@ -51,38 +51,60 @@ async function searchMove(term) {
         }
     }
     catch (err) {
-        console.error("An error has occurred while fetching the move: ", err);
+        console.error("An error has occurred while fetching the Move: ", err);
     }
     finally {
         run(); 
     }
 }
 
-function printPoke(json) {
-    console.log('Pokemon Name: ${json.forms.name}');
-    console.log('Pokemon Types: ${json.types.name}');
-    console.log('Pokemon First Version Appearance: ${json.game_indices.version.name}');
-    console.log('Pokemon Height: ${json.game_indices.height}');
-    console.log('Pokemon Weight: ${json.weight}');
-    // Need implementation of printing out the moveset of pokemon
-    // same with types if i think we will need a for loop
-}
-
 async function searchItem(term) {
     try {
         const response = await fetch('https://pokeapi.co/api/v2/item/${term}');
         if (!response.ok) {
-            throw new Error(`Pokemon does not exist`);
+            throw new Error(`Item does not exist`);
         }
         const itemJSON = await response.json()
         printItem(itemJSON)
     } 
     catch (err) {
-        console.error("An error has occured: ", err);
+        console.error("An error has occured while fetching the Item: ", err);
     }
     finally {
         run();
     }
+}
+
+function printPoke(json) {
+    console.log("-- Pokemon Information --");
+    console.log('Pokemon Name: ${json.forms.name}');
+    console.log('Pokemon Height: ${json.game_indices.height}');
+    console.log('Pokemon Weight: ${json.weight}');
+    console.log('Pokemon Base Experience ${json.base_experience}');
+    for (let i = 0; i <json.moves.length; i ++) {
+        console.log('Move: ${json.moves[i]}');
+    };
+}
+
+function printItem(json) {
+    console.log("-- Item Information --");
+    console.log('Item Name: ${json.name}');
+    console.log('Item Category: ${json.category.name}');
+    console.log('Item Cost: ${json.cost}');
+    for (let i = 0; json.effect_entries.length; i++) {
+        console.log('Effect: ${json.effect_entries[i]}');
+    };
+}
+
+function printMove(json) {
+    console.log("-- Move Information --");
+    console.log('Name: ${json.name}');
+    console.log('Damage Class: ${json.damage_class.name');
+    for (let i = 0; json.effect_entries.length; i++) {
+        console.log('Effect: ${json.effect_entries[i]}');
+    };
+    console.log('Power: ${json.power}');
+    console.log('Accuracy: ${json.accuracy}');
 }
 
 function run() {
@@ -109,3 +131,5 @@ function run() {
     }
 }
 )};
+
+run();
