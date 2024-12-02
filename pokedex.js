@@ -1,7 +1,6 @@
 import readline from "readline";
 import fetch from "node-fetch"; 
 
-// Setup readline to listen on the stdin stream
 const rl = readline.createInterface(process.stdin, process.stdout);
 
 function showMenu() {
@@ -20,7 +19,7 @@ function prompt(cb) {
 
 async function searchPoke(term) {
     try {
-        const lowerTerm = term.toLowerCase();
+        const lowerTerm = term.toLowerCase(); //handling case sensitivity
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${lowerTerm}`);
         if (!response.ok) {
             throw new Error(`Pokemon does not exist.`);
@@ -36,7 +35,7 @@ async function searchPoke(term) {
 
 async function searchMove(term) {
     try {
-        const lowerTerm = term.toLowerCase();
+        const lowerTerm = term.toLowerCase(); //handling case sensitivity
         const response = await fetch(`https://pokeapi.co/api/v2/move/${lowerTerm}`);
         if (!response.ok) {
             throw new Error(`Move does not exist.`);
@@ -52,7 +51,7 @@ async function searchMove(term) {
 
 async function searchItem(term) {
     try {
-        const lowerTerm = term.toLowerCase();
+        const lowerTerm = term.toLowerCase(); //handling case sensitivity
         const response = await fetch(`https://pokeapi.co/api/v2/item/${lowerTerm}`);
         if (!response.ok) {
             throw new Error(`Item does not exist`);
