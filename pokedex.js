@@ -1,5 +1,5 @@
-const readline = require("readline");
-const fetch = require("node-fetch");
+import readline from "readline";
+import fetch from "node-fetch"; 
 
 // Setup readline to listen on the stdin stream
 const rl = readline.createInterface(process.stdin, process.stdout);
