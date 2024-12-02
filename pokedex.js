@@ -12,7 +12,7 @@ function showMenu() {
 }
 
 function prompt(cb) {
-    rl.question("Enter your command to search through the Pokedex: ", (response) => {
+    rl.question("Enter your Pokemon/item/move to search through the Pokedex: ", (response) => {
         cb(response); // The function will call the callback (CB) with the response/user input as the parameter 
     });
 }
