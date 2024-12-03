@@ -1,7 +1,7 @@
 import readline from "readline";
 import fetch from "node-fetch"; 
 
-// Sourced the approach to our packages from: https://nodejs.org/api/packages.html
+// Sourced the approach to our packages for fetching from: https://nodejs.org/api/packages.html
 // Was throwing errors without this approach, will include .json file on submission
 
 const rl = readline.createInterface(process.stdin, process.stdout);
